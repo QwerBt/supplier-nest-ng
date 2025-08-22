@@ -1,31 +1,24 @@
 <!-- <div class="layout-sidebar">
     <app-menu></app-menu>
 </div> -->
+<div
+	(mouseover)="isSlimMenu.set(false)"
+	(mouseleave)="isSlimMenu.set(true)"
+	[ngClass]="{'w-20': isSlimMenu(),'w-[200px]': !isSlimMenu()}"
+	class="fixed top-0 left-0 h-full flex flex-col transition-all duration-700 ease-in-out bg-surface-50 dark:bg-surface-900 z-50 p-3 rounded-r-lg"
+>
+	<div
+		class="flex-grow"
+		[ngClass]="{
+        'w-full flex flex-col items-center': isSlimMenu(),
+        'w-auto': !isSlimMenu()
+    }"
+	>
+		<div class="bg-primary rounded-lg">
+			<p-avatar image="./qwerbt-mini.png" size="large" styleClass="p-0" shape="square" class="shrink-0 cursor-pointer border-2 border-transparent hover:border-blue-500 transition-all duration-700" />
+		</div>
 
-<div [ngClass]="{
-    'w-auto': isSlimMenu,
-    'w-72': !isSlimMenu
-}" class="rounded-lg p-3 bg-surface-50 dark:bg-surface-900 h-full flex flex-col justify-between">
-    <div [ngClass]="{
-        'w-full flex flex-col items-center': isSlimMenu,
-        'w-auto': !isSlimMenu
-    }">
-        <div class="flex items-center gap-4 mt-6">
-            <div [ngClass]="{
-                hidden: isSlimMenu,
-                block: !isSlimMenu
-            }" class="text-surface-950 dark:text-surface-0 font-medium text-3xl">
-                Prime
-            </div>
-        </div>
-
-<div class="bg-primary rounded-lg " >
-    <p-avatar image="./qwerbt-mini.png" size="large" styleClass="p-0"
-    shape="square" class="shrink-0 cursor-pointer  border-2 border-transparent hover:border-blue-500 transition-all duration-300 " />
-</div>
-
-
-<!--
+		<!--
         <div class="p-4 border border-primary rounded-xl flex items-center justify-center">
             <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -54,69 +47,132 @@
                     fill="var(--p-primary-color)" />
             </svg>
         </div> -->
-        <div class="mt-10 flex flex-col gap-4">
-            <div [routerLink]="navItem.routerLink" *ngFor="let navItem of sampleAppsSidebarNavs"
-                [pTooltip]="isSlimMenu ? navItem.title : null" (click)="setSelectedSampleAppsSidebarNav(navItem.title)"
-                class="px-4  border-b  flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
-                [ngClass]="{
-                'w-full justify-center py-4': isSlimMenu,
-                'w-full': !isSlimMenu,
-                'text-muted-color hover:bg-emphasis bg-transparent': selectedSampleAppsSidebarNav !== navItem.title,
-                'text-primary-contrast bg-primary  hover:bg-primary-emphasis': selectedSampleAppsSidebarNav === navItem.title
-            }">
-                <i [class]="navItem.icon" style="font-size: large"></i>
-                <span [ngClass]="{
-                    hidden: isSlimMenu,
-                    'font-medium leading-8': !isSlimMenu
-                }">・</span>
-                <span [ngClass]="{
-                    hidden: isSlimMenu,
-                    'font-medium leading-none': !isSlimMenu
-                }">{{ navItem.title }}</span>
-            </div>
-        </div>
-    </div>
-    <div [ngClass]="{
-        'w-full flex flex-col items-center': isSlimMenu,
-        'w-auto': !isSlimMenu
-    }">
-        <div class="mt-10 flex flex-col gap-2">
-            <div *ngIf="false" [pTooltip]="isSlimMenu ? 'Expanded Mode' : null"
-                class="px-6 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none text-muted-color hover:bg-emphasis"
-                [ngClass]="{
-                'w-full justify-center py-6': isSlimMenu,
-                'w-full': !isSlimMenu
-            }">
-                <a class="cursor-pointer block p-0 m-0 leading-none">
-                    <a class="cursor-pointer block p-0 m-0 leading-none">
-                        <i [class]="isSlimMenu ? 'pi pi-window-maximize' : 'pi pi-window-minimize'"></i>
-                        <span [class]="isSlimMenu ? 'hidden' : 'font-medium leading-8'">・</span>
-                        <span [class]="isSlimMenu ? 'hidden' : 'font-medium leading-none'"> Slim Mode</span>
-                    </a>
-                </a>
-            </div>
-            <div *ngFor="let navItem of sampleAppsSidebarNavsMore" [pTooltip]="isSlimMenu ? navItem.title : null"
-                (click)="dashboardSidebarVisible.set(true)"
-                class="px-6 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
-                [ngClass]="{
-                'w-full justify-center py-6': isSlimMenu,
-                'w-full': !isSlimMenu,
-                'text-muted-color hover:bg-emphasis bg-transparent': selectedSampleAppsSidebarNav !== navItem.title,
-                'text-primary-contrast bg-primary   hover:bg-primary-emphasis': selectedSampleAppsSidebarNav === navItem.title
-            }">
-                <i [class]="navItem.icon" style="font-size: 1.5rem"></i>
-                <span [class]="isSlimMenu ? 'hidden' : 'font-medium leading-8'">・</span>
-                <span [class]="isSlimMenu ? 'hidden' : 'font-medium leading-none'">{{ navItem.title }}</span>
-            </div>
-        </div>
-        <p-divider />
-        <div [class]="isSlimMenu ? 'justify-center' : ' gap-3'" class="flex items-center">
-            <p-avatar image="https://www.primefaces.org/cdn/primevue/images/landing/apps/main-avatar.png" size="large"
-                shape="circle" class="shrink-0 cursor-pointer  border-2 border-transparent hover:border-blue-500 transition-all duration-300 " routerLink="/pages/user-profile" />
-            <div>
-                <div [class]="isSlimMenu ? 'hidden' : 'text-base font-medium text-color leading-5'">Robin Jonas</div>
-                <div [class]="isSlimMenu ? 'hidden' : 'text-sm text-muted-color mt-1'">hi&#64;robin.xyz</div>
-            </div>
-        </div>
-    </div>
+		<div class="mt-10 flex flex-col gap-4">
+			<div
+				*ngFor="let navItem of (selectedAccountNav.id==2?companyNavs:userNavs )"
+				[routerLink]="navItem.routerLink"
+				[pTooltip]="isSlimMenu() ? navItem.title : null"
+				(click)="this.selectedSidebarNav=navItem"
+				class="px-4 py-4 border-b cursor-pointer text-base rounded-lg transition-all select-none flex"
+				[ngClass]="{
+                'justify-center': isSlimMenu(),
+                'justify-start': !isSlimMenu(),
+                'text-muted-color hover:bg-emphasis bg-transparent': selectedSidebarNav !== navItem,
+                'text-primary-contrast bg-primary hover:bg-primary-emphasis': selectedSidebarNav === navItem
+              }"
+			>
+				<!-- İKON ALANI -->
+				<div class="flex items-center justify-center w-6 h-6 min-w-[24px]">
+					<i [class]="navItem.icon" style="font-size: large"></i>
+				</div>
+
+				<!-- AYRAÇ ve BAŞLIK: yalnızca geniş menüde gösterilir -->
+				<div
+					class="flex items-center transition-all duration-700 ease-in-out origin-left"
+					[ngClass]="{
+                  'opacity-0 scale-90 w-0 overflow-hidden': isSlimMenu(),
+                  'opacity-100 scale-100 w-auto ml-2': !isSlimMenu()
+                }"
+				>
+					<span class="mr-1">・</span>
+					<span class="font-medium leading-none whitespace-nowrap"> {{ navItem.title }} </span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div
+		[ngClass]="{
+        'w-full flex flex-col items-center': isSlimMenu(),
+        'w-auto': !isSlimMenu()
+    }"
+	>
+		<div class="mt-10 flex flex-col gap-4">
+			<div
+				*ngIf="false"
+				[pTooltip]="isSlimMenu() ? 'Expanded Mode' : null"
+				class="px-6 py-1 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none text-muted-color hover:bg-emphasis"
+				[ngClass]="{
+                'w-full justify-center py-6': isSlimMenu(),
+                'w-full': !isSlimMenu()
+            }"
+			>
+				<a class="cursor-pointer block p-0 m-0 leading-none">
+					<a class="cursor-pointer block p-0 m-0 leading-none">
+						<i [class]="isSlimMenu() ? 'pi pi-window-maximize' : 'pi pi-window-minimize'"></i>
+						<span [class]="isSlimMenu() ? 'hidden' : 'font-medium leading-8'">・</span>
+						<span [class]="isSlimMenu() ? 'hidden' : 'font-medium leading-none'"> Slim Mode</span>
+					</a>
+				</a>
+			</div>
+			@for (navItem of sidebarNavsMore; track $index) { @if (navItem.visible) {
+			<div
+				[routerLink]="navItem.routerLink"
+				[pTooltip]="isSlimMenu() ? navItem.title : null"
+				(click)="dashboardSidebarVisible.set(true)"
+				class="px-4 py-4 flex items-center gap-1 cursor-pointer text-base rounded-lg transition-all select-none"
+				[ngClass]="{
+                'justify-center': isSlimMenu(),
+                'text-muted-color hover:bg-emphasis bg-transparent': selectedSidebarNav !== navItem.title,
+                'text-primary-contrast bg-primary hover:bg-primary-emphasis': selectedSidebarNav === navItem.title
+              }"
+			>
+				<i [class]="navItem.icon" style="font-size: large"></i>
+
+				<!-- Ayraç Nokta -->
+				<span
+					class="transition-all duration-700 ease-in-out origin-left"
+					[ngClass]="{
+                  'opacity-0 scale-90 w-0 overflow-hidden': isSlimMenu(),
+                  'opacity-100 scale-100 w-auto ml-1': !isSlimMenu()
+                }"
+				>
+					・
+				</span>
+
+				<!-- Menü Başlığı -->
+				<span
+					class="transition-all duration-700 ease-in-out origin-left whitespace-nowrap"
+					[ngClass]="{
+                  'opacity-0 scale-90 w-0 overflow-hidden': isSlimMenu(),
+                  'opacity-100 scale-100 w-auto ml-1 font-medium leading-none': !isSlimMenu()
+                }"
+				>
+					{{ navItem.title }}
+				</span>
+			</div>
+			} }
+		</div>
+
+		<p-divider />
+		<div
+			*ngFor="let navItem of accountsNavs"
+			[routerLink]="navItem.routerLink"
+			[pTooltip]="isSlimMenu() ? navItem.title : null"
+			(click)="selectedAccountNav=navItem"
+			class="px-4 py-4 cursor-pointer text-base rounded-lg transition-all select-none flex"
+			[ngClass]="{
+                'justify-center': isSlimMenu(),
+                'justify-start': !isSlimMenu(),
+                'text-muted-color hover:bg-emphasis bg-transparent': selectedAccountNav !== navItem,
+                'text-primary-contrast bg-primary hover:bg-primary-emphasis': selectedAccountNav === navItem
+              }"
+		>
+			<!-- İKON ALANI -->
+			<div class="flex items-center justify-center w-6 h-6 min-w-[24px]">
+				<i [class]="navItem.icon" style="font-size: large"></i>
+			</div>
+
+			<!-- AYRAÇ ve BAŞLIK: yalnızca geniş menüde gösterilir -->
+			<div
+				class="flex items-center transition-all duration-700 ease-in-out origin-left"
+				[ngClass]="{
+                  'opacity-0 scale-90 w-0 overflow-hidden': isSlimMenu(),
+                  'opacity-100 scale-100 w-auto ml-2': !isSlimMenu()
+                }"
+			>
+				<span class="mr-1">・</span>
+				<span class="font-medium leading-none whitespace-nowrap"> {{ navItem.title }} </span>
+			</div>
+		</div>
+	</div>
 </div>

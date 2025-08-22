@@ -41,7 +41,7 @@
 	</div>
 </div>
 
-<p-dialog [closable]="false" [modal]="true" [showHeader]="false" [(visible)]="visibleSearchDialog" position="top" [style]="{ width: '40vw',minHeight:'300px' }">
+<p-dialog [closable]="false" [modal]="true" [draggable]="false" [showHeader]="false" [(visible)]="visibleSearchDialog" position="top" [style]="{marginTop:'100px', width: '40vw',minHeight:'300px' }">
 	<div class="flex w-full gap-2">
 		<div class="flex justify-center">
 			<p-select [options]="searchTypes" size="large" [(ngModel)]="selectedType" appendTo="body"    optionLabel="label" class="w-full md:w-56" />

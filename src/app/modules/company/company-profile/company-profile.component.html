@@ -1,0 +1,47 @@
+
+
+<p-card header="Firma Profil" subheader="subheader" [style]="{ width: 'width' }" styleClass="styleClass">
+	<p-splitter [panelSizes]="[15, 85]" [style]="{ height: '100%' }" styleClass="h-full">
+		<ng-template #panel>
+			<p-table [value]="companyMenuItems" class="w-full mt-3" stripedRows [rowHover]="true">
+				<ng-template #body let-data>
+					<tr class="cursor-pointer" (click)="selectedMenuItem = data.key">
+						<td>
+							<div class="flex items-center justify-end w-full">
+								<i [class]="data.icon"></i>
+							</div>
+						</td>
+						<td>
+							{{ data.label }}
+						</td>
+					</tr>
+				</ng-template>
+			</p-table>
+		</ng-template>
+		<ng-template #panel>
+            <div class="w-full" >
+			<app-general *ngIf="selectedMenuItem=='general'" [objGeneral]="objCompany"></app-general>
+			<app-addresses *ngIf="selectedMenuItem=='addresses'" [companyAddresses]="objCompany.companyAddresses"></app-addresses>
+			<app-contacts *ngIf="selectedMenuItem=='contacts'" ></app-contacts>
+            <app-transactions *ngIf="selectedMenuItem=='transactions'"></app-transactions>
+            <app-images *ngIf="selectedMenuItem=='images'"></app-images>
+            <app-brands *ngIf="selectedMenuItem=='brands'"></app-brands>
+        </div>
+		</ng-template>
+	</p-splitter>
+
+	<p-footer>
+
+		<div class="flex gap-4 mt-1 justify-end">
+			<p-button label="Kaydet" icon="pi pi-check" severity="success" (onClick)="add()"></p-button>
+		</div>
+	</p-footer>
+</p-card>
+
+
+<!-- CompanyAddresses = companyAddresses;
+CompanyContacts = companyContacts;
+Transactions = transactions;
+CompanyImages = companyImages;
+CompanyCategories = companyCategories;
+CompanyBrands = companyBrands; -->

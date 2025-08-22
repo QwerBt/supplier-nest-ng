@@ -1,0 +1,96 @@
+<div class="flex flex-wrap gap-4">
+    <p-fieldset legend="Genel Bilgiler">
+        <div class="flex flex-col gap-4">
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().name"  autocomplete="off" class="w-full" />
+                <label for="on_label">Firma Adı</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().taxId" autocomplete="off" class="w-full" />
+                <label for="on_label">Vergi Numarası</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <p-inputmask mask="0(999) 999 9999" [(ngModel)]="objGeneral().phone1" styleClass="w-full" />
+                <label for="on_label">Telefon </label>
+            </p-floatlabel>
+            <p-floatlabel variant="on" class="w-full">
+                <p-inputmask mask="0(999) 999 9999" [(ngModel)]="objGeneral().phone2" styleClass="w-full" />
+                <label for="on_label">Telefon 2</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().email" autocomplete="off" class="w-full" type="email" />
+                <label for="on_label">EMail</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().website" autocomplete="off" class="w-full" />
+                <label for="on_label">Web Site</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <p-select [options]="industries.items" appendTo="body" [(ngModel)]="objGeneral().industryId" optionValue="id" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" class="w-full">
+                    <ng-template let-data #item>
+                        <div class="flex items-center gap-2">
+                            <div>{{ data.name }}</div>
+                        </div>
+                    </ng-template>
+                </p-select>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <textarea pTextarea id="over_label" class="w-full" [(ngModel)]="objGeneral().description" rows="5" cols="30" class="h-full"></textarea>
+                <label for="on_label">Açıklama</label>
+            </p-floatlabel>
+        </div>
+    </p-fieldset>
+    <p-fieldset legend="Banka Bilgileri">
+        <div class="flex flex-col gap-4">
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().bankName" autocomplete="off" class="w-full" />
+                <label for="on_label">Banka Adı</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().bankAccountNumber" autocomplete="off" class="w-full" />
+                <label for="on_label">Banka Hesap Numarası</label>
+            </p-floatlabel>
+
+            <div class="flex items-center">
+                <p-checkbox   [(ngModel)]="objGeneral().isVerified" [binary]="true" />
+                <label for="ingredient1" class="ml-2"> Doğrulandı Mı? </label>
+            </div>
+
+
+            <p-floatlabel variant="on" class="w-full">
+                <p-inputnumber [(ngModel)]="objGeneral().creditLimit" inputId="minmax" mode="decimal" class="w-full" [min]="0" [max]="100" />
+                <label for="on_label">Müşteri Kredi Limiti</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().paymentTerms" autocomplete="off" class="w-full" />
+                <label for="on_label">Müşteri Ödeme Şartları </label>
+            </p-floatlabel>
+        </div>
+    </p-fieldset>
+    <p-fieldset legend="Sosyal Medya Bilgileri">
+        <div class="flex flex-col gap-4 h-72">
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().facebookUrl" autocomplete="off" class="w-full" />
+                <label for="on_label">Facebook</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().twitterUrl" autocomplete="off" class="w-full" />
+                <label for="on_label">Twitter</label>
+            </p-floatlabel>
+            <p-floatlabel variant="on" class="w-full">
+                <input pInputText id="on_label" [(ngModel)]="objGeneral().linkedInUrl" autocomplete="off" class="w-full" />
+                <label for="on_label">LinkedIn</label>
+            </p-floatlabel>
+        </div>
+    </p-fieldset>
+
+</div>

@@ -12,6 +12,11 @@ import { MoviesApp } from './app/pages/landing/samples/moviesapp.component';
 import { OverviewApp } from './app/pages/landing/samples/overviewapp.component';
 import { AuthGuard } from './app/core/guards/auth.guard';
 import { Dashboard } from './app/pages/dashboard/dashboard';
+// Lazy loading example
+// {
+//     path: 'products',
+//     loadComponent: () => import('./products/products.component').then(m => m.ProductsComponent)
+//   }
 
 export const appRoutes: Routes = [
 

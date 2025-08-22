@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, PLATFORM_ID, Renderer2, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, model, PLATFORM_ID, Renderer2, ViewChild } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
@@ -68,6 +68,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 	templateUrl: './app.layout.html'
 })
 export class AppLayout {
+    isSlimMenu=model(true);
 	selectedSampleOption: any;
 
 	sampleOptions: any;

@@ -10,17 +10,19 @@ export class JobFunctionService {
     httpCLientService = inject(HttpClientService);
     controller: string = 'JobFunctions';
 
-    async getAll(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<ApiResponse> {
-        const observable: Observable<any> = this.httpCLientService.get({
-            controller: this.controller,
-            queryString: `PageIndex=${page}&PageSize=${size}`
-        });
+    async getAll(page: number = 0, size: number = 10, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<ApiResponse> {
 
-        const promiseData = firstValueFrom(observable);
-        promiseData.then((value) => successCallBack()).catch((error) => errorCallBack(error));
+		const observable: Observable<any> = this.httpCLientService.get({
+			controller: this.controller,
+			queryString: `PageIndex=${page}&PageSize=${size}`
+		});
 
-        return await promiseData;
-    }
+		const promiseData = firstValueFrom(observable);
+		promiseData.then((value) => successCallBack()).catch((error) => errorCallBack(error));
+
+		return await promiseData;
+	}
+
 
     async get(successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<ApiResponse> {
         const observable: Observable<any> = this.httpCLientService.get({

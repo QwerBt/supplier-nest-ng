@@ -1,0 +1,89 @@
+<p-card header="Kullanıcı Profili">
+	<div class="flex flex-col gap-6">
+		<div class="flex gap-4 items-center">
+			<p-avatar icon="pi pi-user" shape="square" size="large" [style]="{ height: '100px', width: '100px' }" />
+			<div class="gap-4 flex flex-col">
+				<p-floatlabel variant="on">
+					<input pInputText id="on_label" [(ngModel)]="objUserProfile.firstName" autocomplete="off" />
+					<label for="on_label">Ad</label>
+				</p-floatlabel>
+
+				<p-floatlabel variant="on">
+					<input pInputText id="on_label" [(ngModel)]="objUserProfile.lastName" autocomplete="off" />
+					<label for="on_label">Soyad</label>
+				</p-floatlabel>
+			</div>
+		</div>
+		<div class="flex gap-4">
+			<div class="flex items-center">
+				<p-checkbox inputId="alici" name="userType" value="Alıcı" [(ngModel)]="objUserProfile.isRoleBuyer" [binary]="true" ngDefaultControl />
+				<label for="ingredient1" class="ml-2"> Alıcı </label>
+			</div>
+			<div class="flex items-center">
+				<p-checkbox inputId="supplier" name="userType" value="Tedarikçi" [(ngModel)]="objUserProfile.isRoleSupplier" [binary]="true" ngDefaultControl />
+				<label for="ingredient1" class="ml-2"> Tedarikçi </label>
+			</div>
+			<div class="flex items-center">
+				<p-checkbox inputId="other" name="userType" value="Diğer" [(ngModel)]="objUserProfile.isRoleOther" [binary]="true" ngDefaultControl />
+				<label for="ingredient1" class="ml-2"> Diğer </label>
+			</div>
+		</div>
+		<div class="flex gap-4">
+			<div class="flex flex-col gap-3 w-full">
+				<p-floatlabel variant="on" class="w-full">
+					<p-select [options]="objLists.lstJobFunctions" [(ngModel)]="objUserProfile.jobFunction" optionValue="id"  optionLabel="name" class="w-full" />
+					<label for="on_label">Departman Seçiniz</label>
+				</p-floatlabel>
+
+				<p-floatlabel variant="on" class="w-full">
+					<p-select [options]="objLists.lstDiscipline" [(ngModel)]="objUserProfile.jobDiscipline" appendTo="body" optionValue="id" optionLabel="name" class="w-full" />
+					<label for="on_label">Alan Seçiniz</label>
+				</p-floatlabel>
+
+				<p-floatlabel variant="on" class="w-full">
+					<p-select [options]="objLists.lstIndustry" [(ngModel)]="objUserProfile.industry" optionValue="id" optionLabel="name" class="w-full" />
+					<label for="on_label">Sektör Seçiniz</label>
+				</p-floatlabel>
+			</div>
+
+			<div class="flex flex-col gap-3 w-full">
+				<p-floatlabel variant="on" class="w-full">
+					<input pInputText id="on_label" [(ngModel)]="objUserProfile.businessEmail" autocomplete="off" class="w-full" />
+					<label for="on_label">İş Email</label>
+				</p-floatlabel>
+
+				<p-floatlabel variant="on" class="w-full">
+					<input pInputText id="on_label" [(ngModel)]="objUserProfile.companyName" autocomplete="off" class="w-full" />
+					<label for="on_label">Firma Adı</label>
+				</p-floatlabel>
+
+				<p-floatlabel variant="on" class="w-full">
+					<input pInputText id="on_label" [(ngModel)]="objUserProfile.companyUrl" autocomplete="off" class="w-full" />
+					<label for="on_label">Firma Web Sitesi</label>
+				</p-floatlabel>
+			</div>
+
+			<div class="flex flex-col gap-3 w-full">
+				<p-floatlabel variant="on" class="w-full">
+					<p-select [options]="objLists.lstCity" [(ngModel)]="objUserProfile.country" optionValue="id" optionLabel="name" class="w-full" />
+					<label for="on_label">Şehir Seçiniz</label>
+				</p-floatlabel>
+
+				<p-floatlabel variant="on" class="w-full">
+					<input pInputText id="on_label" [(ngModel)]="objUserProfile.zipCode" autocomplete="off" class="w-full" />
+					<label for="on_label">Alan Kodu</label>
+				</p-floatlabel>
+				<p-floatlabel variant="on" class="w-full">
+					<input pInputText id="on_label" [(ngModel)]="objUserProfile.mobilePhone" autocomplete="off" class="w-full" />
+					<label for="on_label">Telefon</label>
+				</p-floatlabel>
+			</div>
+		</div>
+	</div>
+
+	<p-footer>
+		<div class="flex justify-center gap-2 w-full mt-4">
+			<p-button label="Değişiklikleri Kaydet" icon="pi pi-save" (onClick)="saveUserProfile()" ></p-button>
+		</div>
+	</p-footer>
+</p-card>

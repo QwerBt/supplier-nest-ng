@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 @Component({
 	selector: 'app-card-table-template',
 	imports: [],
-	template: `<div class="card">
-		<div class="h-[84vh]">
+	template: `
+    <div class="card !p-3 ">
+		<div class="h-[90vh]">
 			<ng-content></ng-content>
 		</div>
 	</div> `,

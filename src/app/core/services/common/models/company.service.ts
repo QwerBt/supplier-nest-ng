@@ -21,12 +21,12 @@ export class CompanyService {
 
 		return await promiseData;
 	}
-	async create(order: any): Promise<void> {
+	async create(data: any): Promise<void> {
 		const observable: Observable<ApiResponse> = this.httpCLientService.post(
 			{
 				controller: this.controller
 			},
-			order
+			data
 		);
 
 		await firstValueFrom(observable);

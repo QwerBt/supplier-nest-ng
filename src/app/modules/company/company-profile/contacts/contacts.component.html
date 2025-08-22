@@ -1,0 +1,31 @@
+
+
+<div class="card">
+	<p-table #dt2 [value]="companyContacts()"    [showLoader]="true" [scrollable]="true" scrollHeight="flex" [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']">
+		<ng-template #header>
+			<tr>
+				<th>Şehir</th>
+				<th>İlçe</th>
+				<th>Sokak</th>
+				<th>Açık Adres</th>
+				<th style="width: 25px"></th>
+			</tr>
+		</ng-template>
+		<ng-template #body let-data let-rowIndex="rowIndex">
+			<tr>
+				<td>{{ data.cityName }}</td>
+				<td>{{ data.townName }}</td>
+				<td>{{ data.street }}</td>
+				<td>{{ data.description }}</td>
+				<th style="width: 25px">
+					<p-button icon="pi pi-trash" severity="danger" (onClick)="removeContact(rowIndex)" ></p-button>
+				</th>
+			</tr>
+		</ng-template>
+		<ng-template #emptymessage>
+			<tr>
+				<td colspan="5">Adres Bulunamadı.</td>
+			</tr>
+		</ng-template>
+	</p-table>
+</div>

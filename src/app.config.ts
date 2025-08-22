@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
 
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, forwardRef } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
 import Aura from '@primeng/themes/aura';
@@ -8,7 +8,6 @@ import { providePrimeNG } from 'primeng/config';
 import { appRoutes } from './app.routes';
 
 import { AuthInterceptor } from './app/core/interceptors/auth.interceptor';
-
 import { HttpErrorHandlerInterceptorService } from './app/core/services/http-error-handler-interceptor.service';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
@@ -16,6 +15,7 @@ import { MessageService } from 'primeng/api';
 import { CustomerService } from './app/core/service/customerservice';
 import { NodeService } from './app/core/service/nodeservice';
 import { ProductService } from './app/core/service/productservice';
+
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -39,12 +39,10 @@ export const appConfig: ApplicationConfig = {
 		},
 
 		{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-
-		{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
 		MessageService,
 		JwtHelperService,
 		NodeService,
 		CustomerService,
-		ProductService
+		ProductService,
 	]
 };
